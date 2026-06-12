@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Milly 👑 June 13th</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #d4a017;
+  --gold2: #f5c842;
+  --gold3: #ffe87c;
+  --black: #0a0a0a;
+  --black2: #141414;
+  --black3: #1e1e1e;
+  --cream: #fdf6e3;
+  --rose: #ff6b8a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  font-family:'Raleway',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CURSOR */
+#cursor{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--gold);
+  position:fixed;top:0;left:0;pointer-events:none;
+  z-index:99999;transform:translate(-50%,-50%);
+  box-shadow:0 0 15px var(--gold2);
+  transition:transform 0.08s ease;
+  mix-blend-mode:difference;
+}
+
+/* FLOATING HEARTS & FLOWERS */
+#floaters{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:hidden;}
+.floater{
+  position:absolute;
+  bottom:-80px;
+  font-size:1.6rem;
+  animation:floatUp linear infinite;
+  opacity:0;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0deg) scale(0.8);opacity:0;}
+  10%{opacity:0.8;}
+  90%{opacity:0.5;}
+  100%{transform:translateY(-110vh) rotate(360deg) scale(1.1);opacity:0;}
+}
+
+/* CONFETTI CANVAS */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:6;}
+
+/* ============================
+   HERO
+============================ */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;overflow:hidden;
+  padding:40px 20px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212,160,23,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(245,200,66,0.08) 0%, transparent 50%),
+    var(--black);
+}
+
+/* Gold particle lines */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(212,160,23,0.03) 60px, rgba(212,160,23,0.03) 61px),
+    repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(212,160,23,0.03) 60px, rgba(212,160,23,0.03) 61px);
+}
+
+.hero-date{
+  font-family:'Raleway',sans-serif;
+  font-weight:300;
+  font-size:clamp(0.9rem,2vw,1.1rem);
+  letter-spacing:8px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+  animation:fadeDown 1s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:none;}}
+
+.hero-crown{
+  font-size:clamp(60px,10vw,90px);
+  animation:crownBounce 1.5s ease infinite alternate;
+  filter:drop-shadow(0 0 30px var(--gold));
+  display:block;margin-bottom:10px;
+}
+@keyframes crownBounce{
+  from{transform:translateY(0) rotate(-3deg);}
+  to{transform:translateY(-15px) rotate(3deg);}
+}
+
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.5rem,12vw,8rem);
+  font-weight:900;
+  color:transparent;
+  background:linear-gradient(135deg, var(--gold) 0%, var(--gold3) 40%, var(--gold2) 60%, var(--gold) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  line-height:1;
+  animation:fadeUp 1s ease 0.2s both;
+  text-shadow:none;
+  filter:drop-shadow(0 0 40px rgba(212,160,23,0.4));
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
+
+.hero-name{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(3rem,10vw,6rem);
+  color:var(--gold2);
+  animation:fadeUp 1s ease 0.4s both;
+  filter:drop-shadow(0 0 20px rgba(245,200,66,0.5));
+}
+
+.hero-line{
+  width:120px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:20px auto;
+  animation:fadeUp 1s ease 0.6s both;
+}
+
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  color:rgba(253,246,227,0.7);
+  font-weight:300;
+  letter-spacing:2px;
+  max-width:500px;
+  line-height:1.8;
+  animation:fadeUp 1s ease 0.8s both;
+}
+
+.scroll-hint{
+  margin-top:50px;
+  font-size:0.85rem;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  animation:pulse 2s infinite, fadeUp 1s ease 1.2s both;
+}
+@keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+/* ============================
+   SECTION BASE
+============================ */
+.section-wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding:80px 24px;
+}
+.section-label{
+  font-family:'Raleway',sans-serif;
+  font-size:0.75rem;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  color:var(--gold);
+  text-align:center;
+  margin-bottom:10px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,6vw,3.5rem);
+  color:var(--cream);
+  text-align:center;
+  margin-bottom:8px;
+}
+.gold-divider{
+  width:80px;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:16px auto 48px;
+}
+
+/* ============================
+   ROAST / FACTS CARDS
+============================ */
+.facts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.fact-card{
+  background:linear-gradient(145deg,var(--black2),var(--black3));
+  border:1px solid rgba(212,160,23,0.3);
+  border-radius:16px;
+  padding:28px;
+  text-align:center;
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
+  position:relative;overflow:hidden;
+}
+.fact-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,160,23,0.06),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.fact-card:hover::after{opacity:1;}
+.fact-card:hover{
+  transform:translateY(-8px) rotate(0.5deg);
+  box-shadow:0 20px 50px rgba(212,160,23,0.2);
+  border-color:var(--gold);
+}
+.fact-emoji{font-size:2.8rem;display:block;margin-bottom:12px;}
+.fact-text{color:rgba(253,246,227,0.8);font-size:0.95rem;line-height:1.6;}
+
+/* ============================
+   MEMES
+============================ */
+.memes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+.meme-card{
+  background:var(--black2);
+  border:1px solid rgba(212,160,23,0.25);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.meme-card:hover{
+  transform:scale(1.03) rotate(-0.5deg);
+  box-shadow:0 16px 40px rgba(212,160,23,0.25);
+}
+.meme-visual{
+  background:#111;
+  padding:28px 20px;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  min-height:190px;justify-content:center;
+  position:relative;
+}
+.meme-visual::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(212,160,23,0.02) 0px,rgba(212,160,23,0.02) 1px,transparent 1px,transparent 4px);
+}
+.meme-top,.meme-bot{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  text-transform:uppercase;
+  text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;
+  z-index:1;line-height:1.3;
+}
+.meme-top{color:var(--gold3);}
+.meme-bot{color:var(--rose);}
+.meme-big{font-size:4.5rem;z-index:1;}
+.meme-caption{
+  padding:14px 18px;
+  color:rgba(253,246,227,0.7);
+  font-size:0.88rem;
+  font-weight:600;
+  border-top:1px solid rgba(212,160,23,0.15);
+  text-align:center;
+}
+
+/* ============================
+   QUIZ
+============================ */
+#quiz-wrap{
+  background:linear-gradient(145deg,var(--black2),var(--black3));
+  border:1px solid rgba(212,160,23,0.3);
+  border-radius:24px;
+  padding:40px;
+  max-width:700px;
+  margin:0 auto;
+}
+.quiz-dots{display:flex;gap:10px;justify-content:center;margin-bottom:28px;}
+.qdot{width:10px;height:10px;border-radius:50%;background:#2a2a2a;transition:all 0.3s;}
+.qdot.done{background:var(--gold);}
+.qdot.now{background:var(--gold2);transform:scale(1.4);}
+#quiz-q{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,3vw,1.6rem);
+  color:var(--cream);
+  text-align:center;
+  min-height:60px;
+  margin-bottom:30px;
+}
+#quiz-q .qe{font-size:2.5rem;display:block;margin-bottom:10px;}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.quiz-opts{grid-template-columns:1fr;}}
+.qopt{
+  background:#1a1a1a;
+  border:1px solid rgba(212,160,23,0.3);
+  border-radius:12px;
+  padding:14px 16px;
+  color:rgba(253,246,227,0.8);
+  font-family:'Raleway',sans-serif;
+  font-weight:600;
+  font-size:0.9rem;
+  cursor:pointer;
+  transition:all 0.2s;
+  text-align:center;
+}
+.qopt:hover{background:#2a2a2a;border-color:var(--gold);color:var(--gold);}
+.qopt.correct{background:#1a2e1a;border-color:#4ade80;color:#4ade80;}
+.qopt.wrong{background:#2e1a1a;border-color:#f87171;color:#f87171;}
+.qopt:disabled{cursor:default;}
+#quiz-fb{
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem;
+  color:var(--gold2);
+  margin-top:20px;min-height:36px;
+}
+#quiz-result{display:none;text-align:center;padding:10px 0;}
+#quiz-result h3{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin-bottom:8px;}
+#quiz-result p{color:rgba(253,246,227,0.7);font-size:1rem;margin-bottom:20px;}
+.gold-btn{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:12px;
+  padding:14px 32px;
+  color:var(--black);font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;
+  cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;
+}
+.gold-btn:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(212,160,23,0.4);}
+
+/* ============================
+   WOULD YOU RATHER
+============================ */
+#wyr-wrap{
+  background:linear-gradient(145deg,var(--black2),var(--black3));
+  border:1px solid rgba(212,160,23,0.3);
+  border-radius:24px;
+  padding:40px;
+  max-width:700px;
+  margin:0 auto;
+}
+#wyr-q{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.1rem,2.5vw,1.45rem);
+  color:var(--gold2);
+  text-align:center;
+  min-height:48px;
+  margin-bottom:28px;
+  font-style:italic;
+}
+.wyr-opts{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.wyr-btn{
+  background:linear-gradient(135deg,#1a1a1a,#222);
+  border:1px solid rgba(212,160,23,0.35);
+  border-radius:16px;
+  padding:20px 22px;
+  color:rgba(253,246,227,0.85);
+  font-family:'Raleway',sans-serif;
+  font-weight:600;font-size:0.95rem;
+  cursor:pointer;transition:all 0.25s;
+  flex:1;min-width:170px;max-width:260px;text-align:center;
+}
+.wyr-btn:hover{border-color:var(--gold);color:var(--gold);transform:scale(1.04);}
+.wyr-em{font-size:2.2rem;display:block;margin-bottom:8px;}
+#wyr-res{
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem;
+  color:var(--gold2);
+  margin-top:22px;min-height:36px;display:none;
+}
+.wyr-next{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:12px;
+  padding:12px 28px;color:var(--black);
+  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;
+  cursor:pointer;margin-top:18px;display:none;
+  transition:transform 0.2s;
+}
+.wyr-next:hover{transform:scale(1.05);}
+
+/* ============================
+   SPIN WHEEL
+============================ */
+#wheel-section{text-align:center;}
+#wheel-canvas{
+  border-radius:50%;cursor:pointer;
+  filter:drop-shadow(0 0 40px rgba(212,160,23,0.5));
+  max-width:300px;width:100%;
+  border:3px solid var(--gold);
+}
+#wheel-res{
+  font-family:'Dancing Script',cursive;
+  font-size:1.6rem;color:var(--gold2);
+  margin-top:14px;min-height:40px;
+}
+
+/* ============================
+   CAKE CLICKER
+============================ */
+#cake-section{text-align:center;padding:80px 24px;}
+#big-cake{
+  font-size:110px;cursor:pointer;
+  display:inline-block;
+  filter:drop-shadow(0 0 40px rgba(212,160,23,0.6));
+  user-select:none;transition:transform 0.1s;
+}
+#big-cake:active{transform:scale(0.82) rotate(-12deg);}
+#big-cake:hover{animation:waggle 0.35s infinite;}
+@keyframes waggle{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+#cake-count{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold);margin-top:14px;}
+#cake-msg{font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--gold2);margin-top:8px;min-height:32px;}
+
+.pop{position:fixed;font-size:2rem;pointer-events:none;z-index:500;animation:popUp 1s forwards ease-out;}
+@keyframes popUp{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-90px) scale(1.8);}}
+
+/* ============================
+   MEDIA SECTION
+============================ */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:600px){.media-grid{grid-template-columns:1fr;}}
+.media-box{
+  background:linear-gradient(145deg,var(--black2),var(--black3));
+  border:1px solid rgba(212,160,23,0.3);
+  border-radius:20px;overflow:hidden;
+}
+.media-lbl{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  color:var(--gold2);
+  padding:16px 20px 8px;
+  border-bottom:1px solid rgba(212,160,23,0.1);
+}
+.media-inner{padding:16px;}
+.media-inner img,.media-inner video{width:100%;border-radius:10px;display:block;max-height:270px;object-fit:cover;}
+.placeholder{
+  width:100%;height:200px;
+  background:linear-gradient(135deg,#111,#1a1a1a);
+  border-radius:10px;border:2px dashed rgba(212,160,23,0.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;color:rgba(253,246,227,0.35);
+  font-size:0.85rem;text-align:center;padding:20px;
+}
+.placeholder span{font-size:2.5rem;}
+
+/* ============================
+   WISH CARD
+============================ */
+.wish-card{
+  background:linear-gradient(145deg,#1a1200,#1e1a00,var(--black2));
+  border:1px solid rgba(212,160,23,0.5);
+  border-radius:24px;padding:42px;
+  color:rgba(253,246,227,0.85);
+  font-size:1.12rem;line-height:2;
+  position:relative;text-align:center;
+  max-width:680px;margin:0 auto;
+}
+.wish-card::before{
+  content:'♛';
+  position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+  font-size:2.5rem;color:var(--gold);
+  filter:drop-shadow(0 0 10px var(--gold));
+}
+.wish-sig{
+  font-family:'Dancing Script',cursive;
+  font-size:1.5rem;
+  color:var(--gold);
+  margin-top:20px;
+}
+
+/* ============================
+   FOOTER
+============================ */
+footer{
+  text-align:center;padding:40px;
+  color:rgba(212,160,23,0.3);
+  font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;
+  border-top:1px solid rgba(212,160,23,0.08);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+<div id="cursor"></div>
+<div id="floaters"></div>
+
+<!-- ══════════ HERO ══════════ -->
+<div id="hero">
+  <p class="hero-date">✦ June 13th ✦ just for Nakimera✦</p>
+  <span class="hero-crown">👑</span>
+  <h1 class="hero-title">Happy Birthday baby garl</h1>
+  <p class="hero-name">Milly</p>
+  <div class="hero-line"></div>
+  <p class="hero-sub">I built you an entire website.<br>A text was simply not enough for a queen. 💅</p>
+  <p class="scroll-hint">↓ scroll down queen ↓</p>
+</div>
+
+<!-- ══════════ ROAST FACTS ══════════ -->
+<div class="section-wrap">
+  <p class="section-label">✦ I know you ✦</p>
+  <h2 class="section-title" style="color:var(--gold)">Things i know about you 🔥</h2>
+  <div class="gold-divider"></div>
+  <div class="facts-grid" id="facts-grid"></div>
+</div>
+
+<!-- ══════════ SPIN WHEEL ══════════ -->
+<div class="section-wrap" id="wheel-section">
+  <p class="section-label">✦ birthday dares ✦</p>
+  <h2 class="section-title" style="color:var(--gold)">Spin the Birthday Wheel! 🎡</h2>
+  <div class="gold-divider"></div>
+  <canvas id="wheel-canvas" width="300" height="300"></canvas>
+  <br>
+  <button class="gold-btn" id="spin-btn" onclick="spinWheel()" style="margin-top:20px;">✨ SPIN IT ✨</button>
+  <div id="wheel-res"></div>
+</div>
+
+<!-- ══════════ CAKE CLICKER ══════════ -->
+<div id="cake-section">
+  <p class="section-label">✦ make a wish ✦</p>
+  <h2 class="section-title" style="color:var(--gold);">Tap the cke to blow Out the Candles! 🕯️</h2>
+  <div class="gold-divider"></div>
+  <div id="big-cake">🎂</div>
+  <div id="cake-count">Wishes made: 0 🌟</div>
+  <div id="cake-msg"></div>
+</div>
+
+<!-- ══════════ MEDIA ══════════ -->
+<div class="section-wrap">
+  <p class="section-label">✦ moments ✦</p>
+  <h2 class="section-title">A Little Something For You 💛</h2>
+  <div class="gold-divider"></div>
+  <div class="media-grid">
+    <!-- IMAGE: Replace the src="" with your image URL -->
+    <div class="media-box">
+      <div class="media-lbl">📸 u remember this😹!</div>
+      <div class="media-inner">
+        <img id="milly-img" src="https://files.catbox.moe/2ypp5q.jpg"
+          onerror="this.style.display='none';document.getElementById('img-ph').style.display='flex';"
+          onload="document.getElementById('img-ph').style.display='none';this.style.display='block';"
+          style="display:none;" alt="Our photo"/>
+        <div class="placeholder" id="img-ph">
+          <span>🖼️</span>
+          <p>Paste your image URL into the code where it says src="" above the image tag!</p>
+        </div>
+      </div>
+    </div>
+    <!-- VIDEO: Replace src="" with your video URL, or swap for a YouTube iframe -->
+    <div class="media-box">
+      <div class="media-lbl"> happy plus one baby!</div>
+      <div class="media-inner">
+        <video id="milly-vid" controls src="https://files.catbox.moe/8716tw.mp4"
+          onerror="this.style.display='none';document.getElementById('vid-ph').style.display='flex';"
+          oncanplay="document.getElementById('vid-ph').style.display='none';this.style.display='block';"
+          style="display:none;"></video>
+        <div class="placeholder" id="vid-ph">
+          <span>🎬</span>
+          <p>Paste your video URL into the code where it says src="" above! Or swap the &lt;video&gt; tag for a YouTube &lt;iframe&gt;.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ WISH ══════════ -->
+<div class="section-wrap">
+  <p class="section-label">✦ from the heart ✦</p>
+  <h2 class="section-title" style="color:var(--gold)">A Note For You 💌</h2>
+  <div class="gold-divider"></div>
+  <div class="wish-card">
+    <p>
+      Milly, I need you to know something: you are genuinely one of a kind. 🌍✨<br><br>
+   i wont say much but,you are one of the characters in my life that i will never forget, cuz u were once on mind mind 🥲✌️. <br><br>
+      please accept my ka suprise gift,i spent days making this🥲, coz i didnt hv money for gift. anyways happy birthday you round headed creature😹😆.
+      love u friend
+    </p>
+    <p class="wish-sig">— With so much love 🌸</p>
+  </div>
+</div>
+
+<footer>Made with love for Milly · June 13th · sorry im now poor for a birthday gift</footer>
+
+<script>
+// ── Cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+
+// ── Floating hearts & flowers
+const floatSyms = ['💛','🌸','🌼','💫','⭐','🌺','💝','✨','🌻','👑','🍀','🌹'];
+const floatContainer = document.getElementById('floaters');
+function makeFloater(){
+  const el = document.createElement('div');
+  el.className = 'floater';
+  el.textContent = floatSyms[Math.floor(Math.random()*floatSyms.length)];
+  el.style.left = Math.random()*98+'%';
+  const dur = 6+Math.random()*8;
+  el.style.animationDuration = dur+'s';
+  el.style.animationDelay = Math.random()*2+'s';
+  el.style.fontSize = (1.2+Math.random()*1.4)+'rem';
+  floatContainer.appendChild(el);
+  setTimeout(()=>el.remove(), (dur+2)*1000);
+}
+setInterval(makeFloater, 600);
+for(let i=0;i<10;i++) setTimeout(makeFloater, i*200);
+
+// ── Confetti
+const cc = document.getElementById('confetti-canvas');
+const cx = cc.getContext('2d');
+cc.width=window.innerWidth; cc.height=window.innerHeight;
+window.addEventListener('resize',()=>{cc.width=window.innerWidth;cc.height=window.innerHeight;});
+const CCOLS = ['#d4a017','#f5c842','#ffe87c','#fff','#ff6b8a','#fdf6e3'];
+let cparts=[];
+function spawnConfetti(n=50){
+  for(let i=0;i<n;i++){
+    cparts.push({x:Math.random()*cc.width,y:-10,w:5+Math.random()*10,h:5+Math.random()*6,
+      col:CCOLS[Math.floor(Math.random()*CCOLS.length)],rot:Math.random()*360,
+      rs:(Math.random()-0.5)*7,vx:(Math.random()-0.5)*3,vy:2+Math.random()*4});
+  }
+}
+function drawCC(){
+  cx.clearRect(0,0,cc.width,cc.height);
+  cparts=cparts.filter(p=>p.y<cc.height+20);
+  cparts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.rot+=p.rs;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot*Math.PI/180);
+    cx.fillStyle=p.col;cx.globalAlpha=0.85;
+    cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore();
+  });
+  requestAnimationFrame(drawCC);
+}
+drawCC(); spawnConfetti(80); setTimeout(()=>spawnConfetti(60),1400);
+
+// ── Facts
+const facts = [
+  {e:'🧠',t:'I know Milly is shy, thats a fact, coz you could not look at me in the eyes, haha shy baby.'},
+  {e:'🎭',t:'I know Milly walks slow,she leaves school at 4pm and reaches home at 6pm,i also dont know why.'},
+  {e:'🔋',t:'I know Milly lost the watch i bought for her in senior one,'},
+];
+const fg = document.getElementById('facts-grid');
+facts.forEach(f=>{
+  const c=document.createElement('div');c.className='fact-card';
+  c.innerHTML=`<span class="fact-emoji">${f.e}</span><p class="fact-text">${f.t}</p>`;
+  c.addEventListener('click',()=>spawnConfetti(15));
+  fg.appendChild(c);
+})        
+
+// ── Spin Wheel
+const wcanvas=document.getElementById('wheel-canvas');
+const wctx=wcanvas.getContext('2d');
+const WSEGMENTS=[
+  {l:'Sing happy bday 🎤',c:'#d4a017'},{l:'Send a silly selfie 🤳',c:'#1a1a1a'},
+  {l:'Call me now 📞',c:'#b8860b'},{l:'you have a bus head',c:'#0a0a0a'},
+  {l:'Dance for 10 secs 💃',c:'#c9a227'},{l:'you need a slap 😂',c:'#1e1e1e'},
+  {l:'post yourself now 🌟',c:'#d4a017'},{l:'Free birthday hug 🤗',c:'#111'},
+];
+let wAngle=0,wSpin=false;
+function drawWheel(ang){
+  const W=wcanvas.width,H=wcanvas.height,cx=W/2,cy=H/2,r=cx-8;
+  const sl=(2*Math.PI)/WSEGMENTS.length;
+  wctx.clearRect(0,0,W,H);
+  WSEGMENTS.forEach((seg,i)=>{
+    const s=ang+i*sl,e=s+sl;
+    wctx.beginPath();wctx.moveTo(cx,cy);wctx.arc(cx,cy,r,s,e);wctx.closePath();
+    wctx.fillStyle=seg.c;wctx.fill();
+    wctx.strokeStyle='rgba(212,160,23,0.4)';wctx.lineWidth=1.5;wctx.stroke();
+    wctx.save();wctx.translate(cx,cy);wctx.rotate(s+sl/2);
+    wctx.textAlign='right';wctx.fillStyle=i%2===0?'#000':'#d4a017';
+    wctx.font='bold 10px Raleway,sans-serif';wctx.fillText(seg.l,r-8,4);wctx.restore();
+  });
+  wctx.beginPath();wctx.arc(cx,cy,18,0,2*Math.PI);
+  wctx.fillStyle='#0a0a0a';wctx.fill();
+  wctx.strokeStyle=var_gold();wctx.lineWidth=2;wctx.stroke();
+  wctx.beginPath();wctx.moveTo(W-4,cy);wctx.lineTo(W-22,cy-9);wctx.lineTo(W-22,cy+9);
+  wctx.closePath();wctx.fillStyle='#d4a017';wctx.fill();
+}
+function var_gold(){return '#d4a017';}
+drawWheel(0);
+function spinWheel(){
+  if(wSpin)return;wSpin=true;
+  document.getElementById('spin-btn').disabled=true;
+  document.getElementById('wheel-res').textContent='🎰 Spinning...';
+  const spinAmt=(Math.PI*2*(6+Math.random()*6))+Math.random()*Math.PI*2;
+  const dur=3200,t0=performance.now(),a0=wAngle;
+  function frame(now){
+    const p=Math.min((now-t0)/dur,1);const e=1-Math.pow(1-p,3);
+    wAngle=a0+spinAmt*e;drawWheel(wAngle);
+    if(p<1){requestAnimationFrame(frame);return;}
+    const norm=((-wAngle)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+    const sl=(2*Math.PI)/WSEGMENTS.length;
+    const idx=Math.floor(norm/sl)%WSEGMENTS.length;
+    document.getElementById('wheel-res').textContent='🎉 '+WSEGMENTS[idx].l;
+    wSpin=false;document.getElementById('spin-btn').disabled=false;spawnConfetti(30);
+  }
+  requestAnimationFrame(frame);
+}
+
+// ── Cake clicker
+let cakes=0;
+const cakemsgs=['Go on then, wish away queen 🌟','Ooh getting greedy are we 👀','She wants EVERYTHING and honestly fair 😂','The candles are actually scared rn 🕯️','This cake has been through it 💀','Milly really said gimme gimme gimme 👑','Cake.exe is fully overloaded 😭','The universe is writing all this down ✨','At this point she\'s basically a genie 🪄','Every wish granted. She deserves it ALL. 💛'];
+document.getElementById('big-cake').addEventListener('click',function(e){
+  cakes++;
+  document.getElementById('cake-count').textContent=`Wishes made: ${cakes} 🌟`;
+  document.getElementById('cake-msg').textContent=cakemsgs[Math.min(cakes-1,cakemsgs.length-1)];
+  const p=document.createElement('div');p.className='pop';
+  p.textContent=['🎉','✨','💫','⭐','👑','💛'][Math.floor(Math.random()*6)];
+  p.style.left=(e.clientX-20)+'px';p.style.top=(e.clientY-20)+'px';
+  document.body.appendChild(p);setTimeout(()=>p.remove(),1000);
+  spawnConfetti(18);
+});
+document.querySelectorAll('.fact-card').forEach(c=>c.addEventListener('click',()=>spawnConfetti(15)));
+</script>
+</body>
+</html>
